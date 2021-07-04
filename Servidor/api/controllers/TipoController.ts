@@ -1,5 +1,6 @@
 import database from '../models'
 import {Request,Response} from 'express'
+import trataTipos from '../tratamentoControllers/trataTipo'
 
 class TipoController {
     async listarTipos(req:Request,res:Response){
@@ -61,10 +62,10 @@ class TipoController {
 
 export default new TipoController()
 
-function trataTipos(arr:any){
+/*function trataTipos(arr:any){
     let tipo = [];
     for(let i:any = 0 ; i < arr.length ; i++){
         tipo.push({id:arr[i].id, categoria:arr[i].categoria})
     }
     return tipo
-}
+}*/

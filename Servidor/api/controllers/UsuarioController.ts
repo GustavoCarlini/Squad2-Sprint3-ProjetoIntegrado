@@ -1,13 +1,14 @@
 import database from '../models'
 import {Request,Response} from 'express'
 import senhaHash from '../estrategiaLogin/senhaHashController'
+//import trataUsuarios from '../tratamentoControllers/trataUsuario'
 
 class UsuarioController{
 
     async listarUsuarios(req:Request,res:Response){
         try{
-            const usuarios = await database.Usuario.findAll()
-            return res.status(200).json(trataUsuarios(usuarios))
+            const usuarios = await database.Usuario.findAll({attributes:["id", "nome", "cpf"]})
+            return res.status(200).json(usuarios)
         }catch(error: any){
             console.log(error)
             return res.status(400).json({erro:"Desculpe, mas nao foi possivel listar os usuarios!"})
@@ -72,11 +73,20 @@ class UsuarioController{
 
 export default new UsuarioController()
 
-function trataUsuarios(arr:any){
+/*function trataUsuarios(arr:any){
     
     let usuario = [];
     for(let i: any = 0 ; i < arr.length ; i++){
         usuario.push({nome: arr[i].nome, cpf: arr[i].cpf})
     }
     return usuario
-}
+}*/
+
+/*function retornos(success:any, msg:any, data:any){
+    const retorno = {
+        success:success,
+        message:msg,
+        details:data
+    }
+    return retorno
+}*/

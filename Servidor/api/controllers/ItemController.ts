@@ -1,5 +1,6 @@
 import database from '../models'
 import {Request,Response} from 'express'
+import trataItens from '../tratamentoControllers/trataItem'
 
 class ItemController {
     async listarItens(req:Request ,res:Response){
@@ -60,10 +61,10 @@ class ItemController {
 }
 export default new ItemController()
 
-function trataItens(arr:any){
+/*function trataItens(arr:any){
     let item = [];
     for(let i: any = 0 ; i < arr.length ; i++){
         item.push({id: arr[i].id, numeracao: arr[i].numeracao, tipoId: arr[i].tipoId})
     }
     return item
-}
+}*/

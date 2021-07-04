@@ -1,4 +1,5 @@
 import database from '../models'
+import trataItensUsuario from '../tratamentoControllers/trataItemUsuario'
 
 module.exports = {
     async listarItensUsuario(req, res) {
@@ -58,10 +59,10 @@ module.exports = {
     }
 }
 
-function trataItensUsuario(arr){
+/*function trataItensUsuario(arr){
     let itensUsuario = [];
     for (let i = 0; i < arr.length; i++) {
         itensUsuario.push({ id: arr[i].id, itemId: arr[i].itemId, usuario_id: arr[i].usuarioId })
     }
     return itensUsuario
-}
+}*/

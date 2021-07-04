@@ -2,12 +2,13 @@ import database from '../models'
 const senhaHash = require('../estrategiaLogin/senhaHashController')
 const jwt = require('jsonwebtoken')
 import {Request,Response} from 'express'
+//import trataLogins from '../tratamentoControllers/trataLogin' 
 
 class LoginController{
     async listar(req:Request,res:Response){
         try{
-            const login = await database.Login.findAll()
-            return res.status(200).json(trataLogins(login))
+            const login = await database.Login.findAll({attributes:["id"]})
+            return res.status(200).json(login)
         }catch(error: any){
             console.log(error.message)
             return res.status(400).json({erro:"Desculpa, mas nao foi possivel listar os logins!"})
@@ -88,10 +89,10 @@ function criaTokenJWT(login:{id:number, senha:string, usuarioId:number}){
 }
 export default new LoginController()
 
-function trataLogins(arr:any){
+/*function trataLogins(arr:any){
     let login = [];
     for(let i:any = 0 ; i < arr.length ; i++){
         login.push({id:arr[i].id})
     }
     return login
-}
+}*/
